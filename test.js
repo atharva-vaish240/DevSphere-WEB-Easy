@@ -1,6 +1,7 @@
 // easy/test.js
 const assert = require('assert');
 const { processCartData } = require('./easy');
+const { exit } = require('process');
 let totalTests = 0;
 let passedTests = 0;
 let failedTests = 0;
@@ -224,6 +225,8 @@ console.log(`Success Rate: ${((passedTests / totalTests) * 100).toFixed(1)}%`);
 
 if (failedTests === 0) {
   console.log('🎉 All tests passed!');
+  process.exit(0);
 } else {
   console.log(`⚠️ ${failedTests} test(s) failed`);
+  process.exit(1);
 }

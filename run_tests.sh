@@ -25,8 +25,7 @@
 # =============================================================
 set -uo pipefail
 
-ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
-# SAMPLES="$ROOT/samples"
+ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 # ╔═════════════════════════════════════════════════════════════╗
 # ║  CONFIGURE — edit this section for your specific task      ║
@@ -43,10 +42,10 @@ ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 # compile() { python3 -m py_compile "$SOLUTION_FILE"; }
 # run()     { python3 "$SOLUTION_FILE" < "$1"; }
 
- ── Option C: JavaScript / Node solution ─────────────────────
- SOLUTION_FILE="$ROOT/Easy/test.js"
- compile() { node --check "$SOLUTION_FILE"; }
- run()     { node "$SOLUTION_FILE" < "$1"; }
+# ── Option C: JavaScript / Node solution ─────────────────────
+SOLUTION_FILE="$ROOT/easy.js"
+compile() { node --check "$SOLUTION_FILE"; }
+run()     { node "$ROOT/test.js"; }
 
 # ── Option D: Custom build step (web / app tasks) ─────────────
 # compile() {
@@ -97,11 +96,7 @@ echo "OK"
 echo ""
 
 echo "── Tests ────────────────────────────────────────────────"
-PASS=0
-FAIL=0
-
-echo "── Tests ────────────────────────────────────────────────"
-if _run_timed "$TIMEOUT" node "$ROOT/Easy/test.js"; then
+if _run_timed "$TIMEOUT" node "$ROOT/test.js"; then
   echo ""
   echo "────────────────────────────────────────────────────────"
   echo "  Result: tests passed"
@@ -116,4 +111,3 @@ else
   fi
   exit 1
 fi
-[[ $FAIL -eq 0 ]]

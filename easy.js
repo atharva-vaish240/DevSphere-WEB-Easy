@@ -30,8 +30,22 @@ function processCartData(cartItems) {
   let totalPrice = 0;
 
   for (const item of cartItems) {
-    // -> Implement it here. 
+
+    item.quantity = Number(item.quantity);
+    item.price = Number(item.price);
+    const ind = cartItems.indexOf(item);
+
+    if (item.id === "") cartItems.splice(ind, 1);
+    else if (item.name.trim() === "") cartItems.splice(ind, 1);
+    else if (item.quantity <= 0 || !Number.isInteger(item.quantity)) cartItems.splice(ind, 1);
+    else if (item.price <= 0 || isNaN(item.price)) cartItems.splice(ind, 1);
+    else {
+      cleanedCart.push(item);
+      totalPrice += item.price * item.quantity;
+    }
+
   }
+
 
   return { cleanedCart, totalPrice };
 }

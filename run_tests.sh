@@ -26,7 +26,7 @@
 set -uo pipefail
 
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
-SAMPLES="$ROOT/samples"
+# SAMPLES="$ROOT/samples"
 
 # ╔═════════════════════════════════════════════════════════════╗
 # ║  CONFIGURE — edit this section for your specific task      ║
